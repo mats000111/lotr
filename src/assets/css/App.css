@@ -37,3 +37,14 @@
     transform: translateY(0px);
   }
 }
+
+@font-face { 
+	font-family: "lotr-title"; 
+	src: url('ringbearer/RINGM___.TTF'); 
+}
+
+.header-title {
+  font-family: "lotr-title";
+  color: gold;
+  background-color: black;
+}

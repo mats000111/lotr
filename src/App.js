@@ -1,10 +1,11 @@
 import React from 'react';
-import './App.css';
+import './assets/css/App.css';
 
 function App() {
   return (
-    <div>
-      hello precious!
+    <div className='header-title'>
+      <h1>hello precious!</h1>
+      <img  src='./assets/images/the-ring.png'/>
     </div>
   );
 }
