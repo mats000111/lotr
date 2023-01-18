@@ -1,12 +1,10 @@
 import React from 'react';
 import './assets/css/App.css';
+import Header from "./components/Header";
 
 function App() {
   return (
-    <div className='header-title'>
-      <h1>hello precious!</h1>
-      <img  src='./assets/images/the-ring.png'/>
-    </div>
+    <Header />
   );
 }
 
