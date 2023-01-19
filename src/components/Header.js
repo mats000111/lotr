@@ -21,7 +21,7 @@ const Header = () => {
     return(
         <Navbar sticky='top' expand="lg" className="header">
             <Container fluid >
-                <Row className='title'>
+                <Row className='center-div header-border'>
                     <Col md="3">
                         <NavbarBrand href="/">
                             <img 
@@ -34,7 +34,7 @@ const Header = () => {
                         </NavbarBrand>
                     </Col>
 
-                    <Col md="6" className='title'>
+                    <Col md="6" className='center-div'>
                         <NavbarBrand>
                             <NavbarText className='header-title'>
                                 The lord of the rings
@@ -42,7 +42,7 @@ const Header = () => {
                         </NavbarBrand>
                     </Col>
 
-                    <Col md="3" className='title'>
+                    <Col md="3" className='center-div'>
                         <Nav>
                             <NavLink className="nav-link custom-nav-link" to="/">Home</NavLink>
                             <NavLink className="nav-link custom-nav-link" to="/timeline">Timeline</NavLink>

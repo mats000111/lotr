@@ -1,8 +1,15 @@
 import React from "react";
+import { Container, Row, Col } from "reactstrap";
 
 const Contact = () => {
     return (
-        <div>Hello precious</div>
+        <Container>
+            <Row>
+                <Col>
+                    <p>basic contact page</p>
+                </Col>
+            </Row>
+        </Container>
     );
 };
 

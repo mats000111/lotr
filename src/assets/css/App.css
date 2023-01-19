@@ -49,8 +49,15 @@
   color: #FBC841;
 }
 
-.title {
+.center-div {
   display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.center-div-vertical {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -66,10 +73,44 @@
 }
 
 .footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   color: #FBC841;
   background-color: black;
   font-family: 'Courier New', Courier, monospace;
+}
+
+.col {
+  border: 2px;
+  border-style: solid;
+  border-color: green;
+  margin: 5px;
+  margin-top: 5px!important;
+}
+
+.row {
+  border: 2px;
+  border-style: solid;
+  border-color: goldenrod;
+  margin: 5px;
+}
+
+h2, h3{
+  margin-bottom: 0px!important;
+}
+
+.header-border {
+  border: 2px;
+  border-style: solid;
+  border-color: gold;
+}
+
+.background-map {
+  background-image: url(../images/middle-earth-map2.jpg);
+  background-repeat: no-repeat;
+  /* background-attachment: fixed; */
+  background-size: cover;
+}
+
+.opacity {
+  background: rgba(0, 0, 0, 0.8);
+  color: #FBC841;
 }

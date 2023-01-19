@@ -1,8 +1,15 @@
 import React from "react";
+import { Container, Row, Col } from "reactstrap";
 
 const Characters = () => {
     return (
-        <div>Hello precious</div>
+        <Container>
+            <Row>
+                <Col>
+                    <p>library separated between good and evil characters</p>
+                </Col>
+            </Row>
+        </Container>
     );
 };
 
