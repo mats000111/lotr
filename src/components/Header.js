@@ -19,10 +19,10 @@ const Header = () => {
     const [menuOpen, setMenuOpen] = useState(false)
 
     return(
-        <Navbar sticky='top'>
-            <Container fluid>
-                <Row>
-                    <Col className='ms-1'>
+        <Navbar sticky='top' expand="lg" className="header">
+            <Container fluid >
+                <Row className='title'>
+                    <Col md="3">
                         <NavbarBrand href="/">
                             <img 
                             src={logo}
@@ -34,25 +34,22 @@ const Header = () => {
                         </NavbarBrand>
                     </Col>
 
-                    <Col className='ms-10'>
-                        <div>
-                            <h1>The lord of the rings</h1>
-                        </div>
+                    <Col md="6" className='title'>
+                        <NavbarBrand>
+                            <NavbarText className='header-title'>
+                                The lord of the rings
+                            </NavbarText>
+                        </NavbarBrand>
                     </Col>
 
-                    <Col className='ms-auto'>
-                        <NavbarText>
-                            Home
-                        </NavbarText>
-                        <NavbarText>
-                            Timeline
-                        </NavbarText>
-                        <NavbarText>
-                            Characters
-                        </NavbarText>
-                        <NavbarText>
-                            Contact
-                        </NavbarText>
+                    <Col md="3" className='title'>
+                        <Nav>
+                            <NavLink className="nav-link custom-nav-link" to="/">Home</NavLink>
+                            <NavLink className="nav-link custom-nav-link" to="/timeline">Timeline</NavLink>
+                            <NavLink className="nav-link custom-nav-link" to="/characters">Characters</NavLink>
+                            <NavLink className="nav-link custom-nav-link" to="/locations">Locations</NavLink>
+                            <NavLink className="nav-link custom-nav-link" to="/contact">Contact</NavLink>
+                        </Nav>
                     </Col>
                 </Row>
             </Container>

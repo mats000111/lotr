@@ -45,6 +45,31 @@
 
 .header-title {
   font-family: "lotr-title";
-  color: gold;
+  font-size: 60px;
+  color: #FBC841;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
   background-color: black;
+}
+
+.custom-nav-link {
+  padding: 0.5rem 0.3rem!important;
+  color: #FBC841!important;
+  font-size: 18px;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #FBC841;
+  background-color: black;
+  font-family: 'Courier New', Courier, monospace;
 }
