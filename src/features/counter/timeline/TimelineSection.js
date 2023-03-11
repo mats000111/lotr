@@ -14,9 +14,10 @@ import {
 } from "reactstrap";
 import { Player } from "video-react";
 import { v4 as uuidv4 } from 'uuid';
+import { EVENTS } from "../../../app/shared/EVENTS";
 
 const TimelineSection = ({ event }) => {
-    const { name, date, description, image, video } = event;
+    const { id, name, date, description, image, video } = event;
 
     const [modal, setModal] = useState(false);
     const [prevModal, setPrevModal] = useState(false);
@@ -26,6 +27,7 @@ const TimelineSection = ({ event }) => {
     const [addDescription, setAddDescription] = useState("");
     const [addImage, setAddImage] = useState("");
     const [addVideo, setAddVideo] = useState("");
+    const [events, setEvents] = useState(EVENTS);
 
     const toggle = () => setModal(!modal);
     const togglePrevModal = () => setPrevModal(!prevModal);
@@ -40,9 +42,38 @@ const TimelineSection = ({ event }) => {
         video: addVideo
     }
 
-    const handleChange = (e) => {
+    const handleDateChange = (e) => {
+        const value = e.target.value;
+        setAddDate(value);
+    }
+    const handleNameChange = (e) => {
         const value = e.target.value;
         setAddName(value);
+    }
+    const handleDescriptionChange = (e) => {
+        const value = e.target.value;
+        setAddDescription(value);
+    }
+    const handleImageChange = (e) => {
+        const value = e.target.value;
+        setAddImage(value);
+    }
+    const handleVideoChange = (e) => {
+        const value = e.target.value;
+        setAddVideo(value);
+    }
+
+    const pushEvent = () => {
+        console.log(events)
+        console.log(id)
+        const newEvents = [...events]
+        console.log(newEvents)
+        const index = newEvents.findIndex((currentObj) => currentObj.id === id)
+        console.log(index)
+        newEvents.splice(index, 0, newSection)
+        console.log(newEvents)
+        setEvents(newEvents)
+        console.log(events)
     }
     
 
@@ -93,7 +124,7 @@ const TimelineSection = ({ event }) => {
                                     placeholder="date"
                                     type="text"
                                     value={addDate}
-                                    onChange={handleChange}
+                                    onChange={handleDateChange}
                                 />
                             </Col>
                         </FormGroup>
@@ -110,6 +141,8 @@ const TimelineSection = ({ event }) => {
                                     name="name"
                                     placeholder="name"
                                     type="text"
+                                    value={addName}
+                                    onChange={handleNameChange}
                                 />
                             </Col>
                         </FormGroup>
@@ -127,6 +160,8 @@ const TimelineSection = ({ event }) => {
                                     placeholder="description"
                                     type="textarea"
                                     rows={6}
+                                    value={addDescription}
+                                    onChange={handleDescriptionChange}
                                 />
                             </Col>
                         </FormGroup>
@@ -143,6 +178,8 @@ const TimelineSection = ({ event }) => {
                                     name="image"
                                     placeholder="image"
                                     type="file"
+                                    value={addImage}
+                                    onChange={handleImageChange}
                                 />
                             </Col>
                         </FormGroup>
@@ -159,11 +196,16 @@ const TimelineSection = ({ event }) => {
                                     name="video"
                                     placeholder="youtube-video url"
                                     type="url"
+                                    value={addVideo}
+                                    onChange={handleVideoChange}
                                 />
                             </Col>
                         </FormGroup>
                     </Form>
                 </ModalBody>
+                <ModalFooter>
+                    <Button onClick={pushEvent}>Add Event</Button>
+                </ModalFooter>
             </Modal>
             <Modal isOpen={nextModal}>
                 <ModalHeader toggle={() => setNextModal(false)}></ModalHeader>
