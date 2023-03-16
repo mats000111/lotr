@@ -5,7 +5,7 @@ import {
     Modal,
     ModalHeader,
     ModalBody,
-    ModalFooter, 
+    ModalFooter,
     Button,
     Form,
     FormGroup,
@@ -13,8 +13,9 @@ import {
     Input
 } from "reactstrap";
 import { Player } from "video-react";
-import { v4 as uuidv4 } from 'uuid';
-import { EVENTS } from "../../../app/shared/EVENTS";
+import { v4 as uuidv4 } from "uuid";
+// import { EVENTS } from "../../../app/shared/EVENTS";
+import { selectAllEvents } from "./timelineSlice";
 
 const TimelineSection = ({ event }) => {
     const { id, name, date, description, image, video } = event;
@@ -27,7 +28,10 @@ const TimelineSection = ({ event }) => {
     const [addDescription, setAddDescription] = useState("");
     const [addImage, setAddImage] = useState("");
     const [addVideo, setAddVideo] = useState("");
-    const [events, setEvents] = useState(EVENTS);
+    const eventList = selectAllEvents();
+    const [events, setEvents] = useState(eventList);
+
+    
 
     const toggle = () => setModal(!modal);
     const togglePrevModal = () => setPrevModal(!prevModal);
@@ -39,55 +43,48 @@ const TimelineSection = ({ event }) => {
         date: addDate,
         description: addDescription,
         image: addImage,
-        video: addVideo
-    }
+        video: addVideo,
+    };
 
     const handleDateChange = (e) => {
         const value = e.target.value;
         setAddDate(value);
-    }
+    };
     const handleNameChange = (e) => {
         const value = e.target.value;
         setAddName(value);
-    }
+    };
     const handleDescriptionChange = (e) => {
         const value = e.target.value;
         setAddDescription(value);
-    }
+    };
     const handleImageChange = (e) => {
         const value = e.target.value;
         setAddImage(value);
-    }
+    };
     const handleVideoChange = (e) => {
         const value = e.target.value;
         setAddVideo(value);
-    }
+    };
 
     const pushEvent = () => {
-        console.log(events)
-        console.log(id)
-        const newEvents = [...events]
-        console.log(newEvents)
-        const index = newEvents.findIndex((currentObj) => currentObj.id === id)
-        console.log(index)
-        newEvents.splice(index, 0, newSection)
-        console.log(newEvents)
-        setEvents(newEvents)
-        console.log(events)
-    }
-    
+        console.log(events);
+        console.log(id);
+        const newEvents = [...events];
+        console.log(newEvents);
+        const index = newEvents.findIndex((currentObj) => currentObj.id === id);
+        console.log(index);
+        newEvents.splice(index, 0, newSection);
+        console.log(newEvents);
+        setEvents(newEvents);
+        console.log(events);
+    };
 
     return (
         <Row>
-            <Col>
-                {date}
-            </Col>
-            <Col>
-                {name}            
-            </Col>
-            <Col>
-                {image}
-            </Col>
+            <Col>{date}</Col>
+            <Col>{name}</Col>
+            <Col>{image}</Col>
             <Col className="col-1">
                 <Button onClick={togglePrevModal}>add previous section</Button>
                 <Button onClick={toggle}>Details</Button>
@@ -98,23 +95,20 @@ const TimelineSection = ({ event }) => {
                 <ModalBody>
                     <div>
                         <Player>
-                            <source src={video}/>
+                            <source src={video} />
                         </Player>
                     </div>
-                    <div>
-                        {description}
-                    </div>
+                    <div>{description}</div>
                 </ModalBody>
             </Modal>
             <Modal isOpen={prevModal} size="lg">
-                <ModalHeader toggle={() => setPrevModal(false)}>Create your own section</ModalHeader>
+                <ModalHeader toggle={() => setPrevModal(false)}>
+                    Create your own section
+                </ModalHeader>
                 <ModalBody>
                     <Form>
                         <FormGroup row>
-                            <Label
-                                for="dateInput"
-                                sm={2}
-                            >
+                            <Label for="dateInput" sm={2}>
                                 Event Date
                             </Label>
                             <Col sm={10}>
@@ -129,10 +123,7 @@ const TimelineSection = ({ event }) => {
                             </Col>
                         </FormGroup>
                         <FormGroup row>
-                            <Label
-                                for="nameInput"
-                                sm={2}
-                            >
+                            <Label for="nameInput" sm={2}>
                                 Event Name
                             </Label>
                             <Col sm={10}>
@@ -147,10 +138,7 @@ const TimelineSection = ({ event }) => {
                             </Col>
                         </FormGroup>
                         <FormGroup row>
-                            <Label
-                                for="descriptionInput"
-                                sm={2}
-                            >
+                            <Label for="descriptionInput" sm={2}>
                                 Event Description
                             </Label>
                             <Col sm={10}>
@@ -166,10 +154,7 @@ const TimelineSection = ({ event }) => {
                             </Col>
                         </FormGroup>
                         <FormGroup row>
-                            <Label
-                                for="imageInput"
-                                sm={2}
-                            >
+                            <Label for="imageInput" sm={2}>
                                 Event Image
                             </Label>
                             <Col sm={10}>
@@ -184,10 +169,7 @@ const TimelineSection = ({ event }) => {
                             </Col>
                         </FormGroup>
                         <FormGroup row>
-                            <Label
-                                for="videoInput"
-                                sm={2}
-                            >
+                            <Label for="videoInput" sm={2}>
                                 Event Video
                             </Label>
                             <Col sm={10}>
@@ -212,10 +194,7 @@ const TimelineSection = ({ event }) => {
                 <ModalBody>
                     <Form>
                         <FormGroup row>
-                            <Label
-                                for="dateInput"
-                                sm={2}
-                            >
+                            <Label for="dateInput" sm={2}>
                                 Event Date
                             </Label>
                             <Col sm={10}>
@@ -228,10 +207,7 @@ const TimelineSection = ({ event }) => {
                             </Col>
                         </FormGroup>
                         <FormGroup row>
-                            <Label
-                                for="nameInput"
-                                sm={2}
-                            >
+                            <Label for="nameInput" sm={2}>
                                 Event Name
                             </Label>
                             <Col sm={10}>
@@ -244,10 +220,7 @@ const TimelineSection = ({ event }) => {
                             </Col>
                         </FormGroup>
                         <FormGroup row>
-                            <Label
-                                for="descriptionInput"
-                                sm={2}
-                            >
+                            <Label for="descriptionInput" sm={2}>
                                 Event Description
                             </Label>
                             <Col sm={10}>
@@ -261,10 +234,7 @@ const TimelineSection = ({ event }) => {
                             </Col>
                         </FormGroup>
                         <FormGroup row>
-                            <Label
-                                for="imageInput"
-                                sm={2}
-                            >
+                            <Label for="imageInput" sm={2}>
                                 Event Image
                             </Label>
                             <Col sm={10}>
@@ -277,10 +247,7 @@ const TimelineSection = ({ event }) => {
                             </Col>
                         </FormGroup>
                         <FormGroup row>
-                            <Label
-                                for="videoInput"
-                                sm={2}
-                            >
+                            <Label for="videoInput" sm={2}>
                                 Event Video
                             </Label>
                             <Col sm={10}>
